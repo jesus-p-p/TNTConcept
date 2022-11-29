@@ -14,25 +14,26 @@
 	<name>tntconcept-web</name>
 	<description>Aplicación de TNT Concept. Genera un war para desplegar en el jboss.</description>
 
-	<!-- <repositories> -->
-	<!-- <repository> -->
-	<!-- <id>java-net</id> -->
-	<!-- <name>java-net</name> -->
-	<!-- <url>http://download.java.net/maven/2</url> -->
-	<!-- </repository> -->
-	<!-- <repository> -->
-	<!-- <id>java.net</id> -->
-	<!-- <url>http://download.java.net/maven/1</url> -->
-	<!-- <layout>legacy</layout> -->
-	<!-- </repository> -->
-	<!-- <repository> -->
-	<!-- <id>jboss</id> -->
-	<!-- <url>http://repository.jboss.com/maven2/</url> -->
-	<!-- </repository> -->
-	<!-- </repositories> -->
+	<properties>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+	</properties>
 
 	<build>
 		<finalName>${project.final.name}-web</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<source>${compileSource}</source>
+						<target>${compileSource}</target>
+						<encoding>${sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -55,42 +56,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <artifactId>maven-resources-plugin</artifactId> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>properties-resources</id> -->
-			<!-- <phase>process-resources</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>resources</goal> -->
-			<!-- </goals> -->
-			<!-- <configuration> -->
-			<!-- <outputDirectory> -->
-			<!-- ${project.build.outputDirectory} -->
-			<!-- </outputDirectory> -->
-			<!-- <encoding>ISO-8859-1</encoding> -->
-			<!-- <resources> -->
-			<!-- <directory> -->
-			<!-- src/main/resources -->
-			<!-- </directory> -->
-			<!-- <filtering>true</filtering> -->
-			<!-- <includes> -->
-			<!-- <include>**/**.properties</include> -->
-			<!-- </includes> -->
-			<!-- </resources> -->
-			<!-- </configuration> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
-				<version>2.5.2</version>
+				<version>${maven.install.plugin.version}</version>
 				<executions>
 					<execution>
 						<id>execution1_javacup</id>
@@ -196,13 +172,13 @@
 						<goals>
 							<goal>install-file</goal>
 						</goals>
-						<configuration>
-							<groupId>org.olap4j</groupId>
-							<artifactId>olap4j</artifactId>
-							<version>0.9.6</version>
-							<packaging>jar</packaging>
-							<file>${project.basedir}/jars_to_install/olap4j-0.9.6.jar</file>
-						</configuration>
+<!--						<configuration>-->
+<!--							<groupId>org.olap4j</groupId>-->
+<!--							<artifactId>olap4j</artifactId>-->
+<!--							<version>0.9.6</version>-->
+<!--							<packaging>jar</packaging>-->
+<!--							<file>${project.basedir}/jars_to_install/olap4j-0.9.6.jar</file>-->
+<!--						</configuration>-->
 					</execution>
 					<execution>
 						<id>execution9_olap4j</id>
@@ -235,56 +211,56 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.17.2</version>
+			<version>2.19.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.17.2</version>
+			<version>2.19.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-jcl</artifactId>
-			<version>2.17.2</version>
+			<version>2.19.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>commons-digester</groupId>
-			<artifactId>commons-digester</artifactId>
-			<version>1.7</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-digester3</artifactId>
+			<version>3.2</version>
 		</dependency>
 		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
+			<groupId> org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.myfaces.tomahawk</groupId>
-			<artifactId>tomahawk</artifactId>
-			<version>1.1.6</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-lang</groupId>
-					<artifactId>commons-lang</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.myfaces.tomahawk</groupId>-->
+<!--			<artifactId>tomahawk</artifactId>-->
+<!--			<version>1.1.14</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>commons-lang</groupId>-->
+<!--					<artifactId>commons-lang</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>1.2_04-p01</version>
+			<version>2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>1.2_04-p01</version>
+			<version>1.2-20</version>
 		</dependency>
 
 		<dependency>
-			<groupId>jasperreports</groupId>
+			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>1.3.2</version>
+			<version>6.20.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>bouncycastle</groupId>
@@ -302,64 +278,64 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.lowagie</groupId>
-			<artifactId>itext</artifactId>
-			<version>1.1.4</version>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.13.3</version>
 		</dependency>
 
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.el</groupId>
-			<artifactId>el-api</artifactId>
-			<version>1.0</version>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
-			<version>1.3.03</version>
+			<version>2.0.2</version>
 		</dependency>
 
 		<dependency>
-			<groupId>jfree</groupId>
+			<groupId>org.jfree</groupId>
 			<artifactId>jcommon</artifactId>
-			<version>1.0.8</version>
+			<version>1.0.24</version>
 		</dependency>
 		<dependency>
-			<groupId>poi</groupId>
+			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>2.0-final-20040126</version>
+			<version>5.2.3</version>
 		</dependency>
 		<!-- Required by com.tonbeller.jpivot.print.PrintServlet -->
 		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>fop</artifactId>
-			<version>2.2</version>
+			<version>2.8</version>
 		</dependency>
 
 		<!-- =================== Dependencias de Mondrian - JPivot =================== -->
 		<dependency>
-			<groupId>jfree</groupId>
+			<groupId>org.jfree</groupId>
 			<artifactId>jfreechart</artifactId>
-			<version>1.0.9</version>
+			<version>1.5.3</version>
 		</dependency>
 
 		<!-- No están en repositorios públicos, hay que añadirlos manualmente a
@@ -367,7 +343,7 @@
 		<dependency>
 			<groupId>org.olap4j</groupId>
 			<artifactId>olap4j</artifactId>
-			<version>0.9.6</version>
+			<version>1.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>mondrian</groupId>
@@ -411,36 +387,20 @@
 		</dependency>
 		<!-- /=================== Dependencias de Mondrian - JPivot =================== -->
 
-		<!-- <dependency> -->
-		<!-- <groupId>commons-dbcp</groupId> -->
-		<!-- <artifactId>commons-dbcp</artifactId> -->
-		<!-- <version>1.2.2</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>commons-vfs</groupId> -->
-		<!-- <artifactId>commons-vfs</artifactId> -->
-		<!-- <version>1.0</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>commons-math</groupId> -->
-		<!-- <artifactId>commons-math</artifactId> -->
-		<!-- <version>1.2</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>commons-pool</groupId> -->
-		<!-- <artifactId>commons-pool</artifactId> -->
-		<!-- <version>1.4</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
-			<version>1.1.1</version>
+			<version>1.2.0</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.jdom</groupId>-->
+<!--			<artifactId>jaxen-jdom</artifactId>-->
+<!--			<version>1.0-FCS</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.jdom</groupId>
-			<artifactId>jaxen-jdom</artifactId>
-			<version>1.0-FCS</version>
+			<artifactId>jdom2</artifactId>
+			<version>2.0.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>saxpath</groupId>
@@ -456,14 +416,14 @@
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.4.0</version>
+			<version>${hsqldb.version}</version>
 			<scope>test</scope>
 		</dependency>
         <!-- Database migration scripts for integration tests -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>4.2.0</version>
+            <version>9.8.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -471,13 +431,13 @@
 		<dependency>
 			<groupId>com.github.lookfirst</groupId>
 			<artifactId>sardine</artifactId>
-			<version>5.9</version>
+			<version>5.10</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.7</version>
+			<version>1.15</version>
 		</dependency>
 
 
