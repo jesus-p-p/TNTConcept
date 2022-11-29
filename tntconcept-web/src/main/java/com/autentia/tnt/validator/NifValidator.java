@@ -17,6 +17,8 @@
 
 package com.autentia.tnt.validator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
@@ -24,8 +26,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-
-import org.apache.commons.lang.StringUtils;
 
 /**
  * Validador de NIF
@@ -39,7 +39,7 @@ public class NifValidator implements Validator
 	public void validate(FacesContext context, 
 			             UIComponent component, Object value) throws ValidatorException 
 	{
-		// Si el valor es null, lo transformamos en un valor vac�o
+		// Si el valor es null, lo transformamos en un valor vac&#xFFFD;o
 		String valor = StringUtils.defaultString((String)value);
 		// el valor debe tener 9 posiciones
 		valor=valor.toUpperCase();

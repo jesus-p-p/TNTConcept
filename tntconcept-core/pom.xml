@@ -14,14 +14,31 @@
 	<name>tntconcept-core</name>
 	<description>Clases principales de la aplicación TNTConcept</description>
 
-	<build>
+	<properties>
+		<messageResourcesEncoding>ISO-8859-1</messageResourcesEncoding>
+		<maven.resources.plugin.version>3.3.0</maven.resources.plugin.version>
+	</properties>
 
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.plugin.version}</version>
+					<configuration>
+						<encoding>${messageResourcesEncoding}</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
 				<configuration>
-					<encoding>${sourceEncoding}</encoding>
+					<encoding>${messageResourcesEncoding}</encoding>
 				</configuration>
 			</plugin>
 

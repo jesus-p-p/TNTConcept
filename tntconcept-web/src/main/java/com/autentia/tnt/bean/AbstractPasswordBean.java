@@ -1,11 +1,12 @@
 package com.autentia.tnt.bean;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import com.autentia.tnt.businessobject.User;
 import org.acegisecurity.BadCredentialsException;
 import org.acegisecurity.ldap.LdapDataAccessException;
-import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -139,8 +140,10 @@ public abstract class AbstractPasswordBean extends BaseBean {
     }
 
     protected Date calcNextExpireDate() {
-
-        return DateUtils.addDays(new Date(), ConfigurationUtil.getDefault().getDaysToExpirePassword());
+        int days = ConfigurationUtil.getDefault().getDaysToExpirePassword();
+        LocalDateTime currentPlusDay = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().plusDays(days);
+        return Date.from(currentPlusDay.atZone(ZoneId.systemDefault()).toInstant());
+//        return DateUtils.addDays(new Date(), ConfigurationUtil.getDefault().getDaysToExpirePassword());
     }
 
     protected void addErrorMessage(String messageKey, Object... args) {

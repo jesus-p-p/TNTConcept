@@ -17,6 +17,8 @@
 
 package com.autentia.tnt.converter;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -25,7 +27,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
-import org.apache.commons.lang.StringUtils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 

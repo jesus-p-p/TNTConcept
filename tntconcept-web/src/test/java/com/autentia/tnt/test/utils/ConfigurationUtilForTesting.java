@@ -26,8 +26,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.naming.NamingException;
-
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.logging.Log;
@@ -67,7 +65,7 @@ public class ConfigurationUtilForTesting extends ConfigurationUtil {
 
 
 	public ConfigurationUtilForTesting(String jndiPathVar, String file)
-			throws ConfigurationException, NamingException {
+			throws ConfigurationException {
 
 		super();
 		configDir =  System.getProperty("user.dir") + jndiPathVar;

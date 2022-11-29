@@ -24,7 +24,6 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.commons.lang.*;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import com.autentia.tnt.upload.*;

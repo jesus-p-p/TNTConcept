@@ -17,6 +17,8 @@
 
 package com.autentia.tnt.manager.holiday;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 import com.autentia.tnt.businessobject.*;
@@ -91,7 +93,9 @@ public class UserHolidaysStateManager {
                 if(!this.isHoliday(allFiestas, current)){
                     total++;
                 }
-                current = DateUtils.addDays(current, 1);
+//                current = DateUtils.addDays(current, 1);
+                LocalDateTime currentPlusDay = current.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().plusDays(1);
+                current = Date.from(currentPlusDay.atZone(ZoneId.systemDefault()).toInstant());
             }
         }
 

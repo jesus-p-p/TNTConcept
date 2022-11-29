@@ -30,7 +30,6 @@ import javax.faces.context.ResponseWriter;
 
 import org.apache.myfaces.custom.schedule.HtmlSchedule;
 import org.apache.myfaces.custom.schedule.model.ScheduleDay;
-import org.apache.myfaces.custom.schedule.renderer.AbstractCompactScheduleRenderer;
 import org.apache.myfaces.shared_tomahawk.renderkit.html.HTML;
 
 
@@ -122,18 +121,11 @@ public class BitacoreScheduleCompactMonthRenderer
 
         writer.endElement(HTML.DIV_ELEM);
     }
-
-    /**
-     * @see AbstractCompactScheduleRenderer#getDefaultRowHeight()
-     */
     protected int getDefaultRowHeight()
     {
         return 120;
     }
 
-    /**
-     * @see AbstractCompactScheduleRenderer#getRowHeightProperty()
-     */
     protected String getRowHeightProperty()
     {
         return "compactMonthRowHeight";
