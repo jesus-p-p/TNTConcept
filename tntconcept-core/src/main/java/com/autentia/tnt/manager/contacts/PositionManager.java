@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -34,8 +35,6 @@ import com.autentia.tnt.dao.hibernate.ContactDAO;
 import com.autentia.tnt.dao.hibernate.PositionDAO;
 import com.autentia.tnt.dao.search.PositionSearch;
 import com.autentia.tnt.manager.security.AuthenticationManager;
-import com.autentia.tnt.tracking.EntityChange;
-import com.autentia.tnt.tracking.hibernate.dao.EntityChangeDAO;
 import com.autentia.tnt.util.SpringUtils;
 
 public class PositionManager {

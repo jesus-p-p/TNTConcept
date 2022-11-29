@@ -20,10 +20,11 @@ package com.autentia.tnt.tracking.hibernate.listener;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.event.PostUpdateEvent;
-import org.hibernate.event.PostUpdateEventListener;
 import com.autentia.tnt.dao.ITransferObject;
 import com.autentia.tnt.tracking.Tracking;
+import org.hibernate.event.spi.PostUpdateEvent;
+import org.hibernate.event.spi.PostUpdateEventListener;
+import org.hibernate.persister.entity.EntityPersister;
 
 
 public class TrackChangesUpdateListener implements PostUpdateEventListener {
@@ -50,4 +51,7 @@ public class TrackChangesUpdateListener implements PostUpdateEventListener {
 
     }
 
+    public boolean requiresPostCommitHandling(EntityPersister entityPersister) {
+        return false;
+    }
 }

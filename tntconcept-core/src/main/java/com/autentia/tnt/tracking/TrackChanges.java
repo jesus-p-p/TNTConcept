@@ -23,9 +23,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.autentia.tnt.manager.security.AuthenticationManager;
+import org.apache.commons.lang3.StringUtils;
 
 
 public class TrackChanges {

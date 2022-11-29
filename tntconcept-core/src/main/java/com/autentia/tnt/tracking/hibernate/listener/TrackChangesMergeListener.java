@@ -20,13 +20,13 @@ package com.autentia.tnt.tracking.hibernate.listener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
-import org.hibernate.event.MergeEvent;
-import org.hibernate.event.def.DefaultMergeEventListener;
 
 import com.autentia.tnt.dao.ITransferObject;
 import com.autentia.tnt.tracking.Tracking;
+import org.hibernate.event.internal.DefaultMergeEventListener;
+import org.hibernate.event.spi.MergeEvent;
 
-public class TrackChangesMergeListener extends DefaultMergeEventListener{
+public class TrackChangesMergeListener extends DefaultMergeEventListener {
 	
 	/**
 	 * 
