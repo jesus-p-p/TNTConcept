@@ -46,6 +46,9 @@ jobs:
 
 
       - name: Prepare Maven Release
+        with:
+          server-username: ${{ secrets.MAVEN_USERNAME }}
+          server-password: ${{ secrets.MAVEN_PASSWORD }}
         run: |
           mvn -B release:prepare
           NEXT_RELEASE=$(grep -r 'scm.tag=' release.properties | sed 's/scm.tag=//')
